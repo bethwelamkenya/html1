@@ -50,7 +50,7 @@ export default {
     mounted() {
         this.parent = this.$parent
         this.logged = this.parent.isLoggedIn
-        alert(this.logged)
+        // alert(this.logged)
         this.membersTable = this.$refs["members-table"]
         this.isLogged = this.$refs["isLogged"]
         if (this.parent.isLoggedIn === 1){

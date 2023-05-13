@@ -214,7 +214,7 @@ export default {
             this.continueFunctions()
         },
         changePage(page) {
-            alert(page)
+            // alert(page)
             if (page === this.home) {
                 this.home.classList.add("activeSpans")
                 this.services.classList.remove("activeSpans")
