@@ -2,7 +2,8 @@
 
     <div>
         <h1 class="specific-page-title">Account Page</h1>
-        <div>
+        <div id="forms">
+<!--            <form  method="post" name="signup" id="signup" class="signup-form" action="../../databases.php">-->
             <form @submit.prevent="checkAdminDetails">
                 <h2>Admin Log In</h2>
                 <label for="user-name">User Name</label><br>
@@ -33,24 +34,25 @@
                 <button>Add Admin</button>
             </form>
 
+<!--            <form  method="post" name="signup" id="signup" class="signup-form" action="../../databases.php">-->
             <form @submit.prevent="addMember">
                 <h2>Member Sign Up</h2>
                 <label for="memberName">Full Name</label><br>
-                <input type="text" id="memberName" v-model="memberName" placeholder="Name" required><br>
+                <input type="text" id="memberName" v-model="memberName" placeholder="Name" required name="memberName"><br>
                 <label for="memberEmail">Email</label><br>
-                <input type="email" id="memberEmail" v-model="memberEmail" placeholder="Email"><br>
+                <input type="email" id="memberEmail" v-model="memberEmail" placeholder="Email" name="memberEmail"><br>
                 <label for="adminNumber">Registration number</label><br>
-                <input type="text" id="memberRegNo" v-model="memberRegNo" placeholder="Reg No"><br>
+                <input type="text" id="memberRegNo" v-model="memberRegNo" placeholder="Reg No" name="memberRegNo"><br>
                 <label for="memberNumber">Number</label><br>
-                <input type="number" id="memberNumber" v-model="memberNumber" placeholder="Number"><br>
+                <input type="number" id="memberNumber" v-model="memberNumber" placeholder="Number" name="memberNumber"><br>
                 <label for="memberSchool">School</label><br>
-                <input type="text" id="memberSchool" v-model="memberSchool" placeholder="School"><br>
+                <input type="text" id="memberSchool" v-model="memberSchool" placeholder="School" name="memberSchool"><br>
                 <label for="memberYear">Year</label><br>
-                <input type="number" id="memberYear" v-model="memberYear" placeholder="Year"><br>
+                <input type="number" id="memberYear" v-model="memberYear" placeholder="Year" name="memberYear"><br>
                 <label for="memberDepartment">Department</label><br>
-                <input type="text" id="memberDepartment" v-model="memberDepartment" placeholder="Department"><br>
+                <input type="text" id="memberDepartment" v-model="memberDepartment" placeholder="Department" name="memberDepartment"><br>
                 <label for="memberResidence">Residence</label><br>
-                <input type="text" id="memberResidence" v-model="memberResidence" placeholder="Residence"><br>
+                <input type="text" id="memberResidence" v-model="memberResidence" placeholder="Residence" name="memberResidence"><br>
                 <button>Add Member</button>
             </form>
 
@@ -97,6 +99,8 @@ export default {
     },
     methods: {
         navigateToOther() {
+            alert(this.parent)
+            alert(this.parent.services)
             this.parent.changePage(this.parent.services)
         },
         addAdmin() {
@@ -193,6 +197,12 @@ export default {
 </script>
 
 <style scoped>
+#forms {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
 form {
     background: var(--color-background-nav);
     margin: 10px;

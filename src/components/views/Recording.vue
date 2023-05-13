@@ -1,12 +1,18 @@
+<script setup>
+import Download_cloud from "@/components/icons/download_cloud.vue";
+import Play from "@/components/icons/play.vue";
+import Audio_wave from "@/components/icons/audio_wave.vue";
+import Pause from "@/components/icons/pause.vue";
+</script>
 <template>
     <div id="item">
         <h2 ref="header">{{ day }}</h2>
         <div v-for="(audio, index) in audio" :key="index" id="details">
             <h3>{{ audio.type }}</h3>
             <a href="#">{{ audio.link }}</a><br>
-            <img src="../../assets/img/download_from_cloud.svg" alt="download">
-            <img src="../../assets/img/circled_play.svg" alt="play">
-            <img src="../../assets/img/wavy_line.svg" alt="wave line" class="audio-wave">
+            <Download_cloud class="img"></Download_cloud>
+            <Play class="img"></Play>
+            <Audio_wave class="img audio-wave"></Audio_wave>
         </div>
     </div>
 
@@ -80,14 +86,14 @@ export default {
     font-weight: bolder;
 }
 
-#details img {
+#details .img {
     height: 30px;
     width: 30px;
     padding: 3px;
     border-radius: 25%;
 }
 
-#details img:hover {
+#details .img:hover {
     background: #888888;
     cursor: pointer;
 }

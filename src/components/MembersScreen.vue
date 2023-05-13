@@ -1,4 +1,5 @@
 <template>
+    <h2 ref="isLogged">{{loggedText}}</h2>
     <div id="members-div">
         <table id="members-table" ref="members-table">
             <thead>
@@ -38,21 +39,38 @@ export default {
     name: "MembersScreen",
     data() {
         return {
+            parent: null,
             membersTable: null,
+            isLogged: null,
+            logged: 0,
+            loggedText: '',
             members: []
         }
     },
     mounted() {
+        this.parent = this.$parent
+        this.logged = this.parent.isLoggedIn
+        alert(this.logged)
         this.membersTable = this.$refs["members-table"]
-        axios.get('http://127.0.0.1:3000/data')
-        // axios.get('http://localhost:3000/data')
-            .then(response => {
-                this.members = response.data;
-            })
-            .catch(error => {
-                console.log(error);
-                alert("error " + error)
-            });
+        this.isLogged = this.$refs["isLogged"]
+        if (this.parent.isLoggedIn === 1){
+            axios.get('http://127.0.0.1:3000/data')
+                // axios.get('http://localhost:3000/data')
+                .then(response => {
+                    this.members = response.data;
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert("error " + error)
+                });
+            // this.isLogged.style = 'visibility: hidden;'
+            this.isLogged.classList.add('loggedIn')
+            this.loggedText = ''
+            // this.isLogged.textContent = ''
+        } else {
+            this.isLogged.classList.remove('loggedIn')
+            this.loggedText = 'Log In To View Members'
+        }
     },
     methods: {
         // populateRandomData() {
@@ -121,5 +139,14 @@ export default {
 #members-table tbody td:first-child {
     color: green;
     font-weight: bold;
+}
+
+.loggedIn {
+    visibility: hidden;
+}
+
+h2 {
+    font-weight: bold;
+    margin-left: 20px;
 }
 </style>

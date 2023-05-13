@@ -1,31 +1,56 @@
 <script setup>
+import Facebook from "@/components/icons/facebook.vue";
+import Linkedin from "@/components/icons/linkedin.vue";
+import Gmail from "@/components/icons/gmail.vue";
+import Account from "@/components/icons/account.vue";
+import Home from "@/components/icons/home.vue";
+import Menu from "@/components/icons/menu.vue";
+import Services from "@/components/icons/services.vue";
+import Audio from "@/components/icons/audio.vue";
+import Settings from "@/components/icons/settings.vue";
+import About from "@/components/icons/about.vue";
+import Group from "@/components/icons/group.vue";
+import Domain from "@/components/icons/domain.vue";
+import Twitter from "@/components/icons/twitter.vue";
+import Instagram from "@/components/icons/instagram.vue";
+import Phone from "@/components/icons/phone.vue";
+import Maps from "@/components/icons/maps.vue";
+import Arrow_right from "@/components/icons/arrow_right.vue";
 </script>
 
 <template>
     <nav ref="navBar">
         <div>
-            <img @click="toggleNavBar" :id="navbar-toggle-button" src="./assets/img/menu.svg" alt="Show Menu">
-            <a href="#" @click="changePage(home)" ref="home"><img src="./assets/img/home.svg"
-                                                                  alt="Show Menu"><span>Home</span></a>
-            <a href="#" @click="changePage(services)" ref="services"><img src="./assets/img/services.svg"
-                                                                          alt="Show Menu"><span>Services</span></a>
-            <a href="#" @click="changePage(recordings)" ref="recordings"><img src="./assets/img/audio_wave.svg"
-                                                                              alt="Show Menu"><span>Recordings</span></a>
+            <Menu @click="toggleNavBar" class="img"></Menu>
+            <a href="#" @click="changePage(home)" ref="home">
+                <Home class="img"></Home>
+                <span>Home</span></a>
+            <a href="#" @click="changePage(services)" ref="services">
+                <Services class="img"></Services>
+                <span>Services</span></a>
+            <a href="#" @click="changePage(recordings)" ref="recordings">
+                <Audio class="img"></Audio>
+                <span>Recordings</span></a>
         </div>
         <div class="nav-footer">
             <a href="#" @click="toggleDarkMode" :id="change_mode">
-                <img ref="themeIcon" id="themeIcon" src="./assets/img/sun.svg" alt="Change Theme">
-                <span>{{modeText}}</span>
+                <component :is="darkModeOn" class="img" id="themeIcon"></component>
+                <span>{{ modeText }}</span>
             </a>
-            <a href="#" ref="settings"><img src="./assets/img/settings.svg" alt="Show Menu"><span>Settings</span></a>
-            <a href="#" ref="accounts" @click="changePage(accounts)"><img src="./assets/img/user.svg"
-                                                                          alt="Show Menu"><span>Account</span></a>
-            <a href="#" ref="about"><img src="./assets/img/about.svg" alt="Show Menu"><span>About</span></a>
-            <a href="#" ref="members" @click="changePage(members)"><img src="./assets/img/user_group_man_woman.svg" alt="Show Menu"
-                                         class="last-footer"><span>Members</span></a>
+            <a href="#" ref="settings">
+                <Settings class="img"></Settings>
+                <span>Settings</span></a>
+            <a href="#" ref="accounts" @click="changePage(accounts)">
+                <Account class="img"></Account>
+                <span>Account</span></a>
+            <a href="#" ref="about">
+                <About class="img"></About>
+                <span>About</span></a>
+            <a href="#" ref="members" @click="changePage(members)">
+                <Group class="img last-footer"></Group>
+                <span>Members</span></a>
         </div>
     </nav>
-
 
     <main id="main-body" ref="mainBody">
         <component :is="currentPage"></component>
@@ -38,32 +63,41 @@
                     <h3> Social Media</h3>
                     <p>Find our social media handles here</p>
                     <div class="share">
-                        <a target="_blank" href="https://www.repentandpreparetheway.org/"><img
-                                src="./assets/img/domain.svg" alt="website"></a>
-                        <a target="_blank" href="https://www.facebook.com/bethwelkaranja.wairimu"><img
-                                src="./assets/img/facebook_new.svg" alt="facebook"></a>
-                        <a target="_blank" href="https://www.twitter.com/bethwel_karanja"><img
-                                src="./assets/img/twitter_circled.svg" alt="twitter"></a>
-                        <a target="_blank" href="https://www.instagram.com/bethwel_karanja/"><img
-                                src="./assets/img/instagram_new.svg" alt="instagram"></a>
-                        <a target="_blank" href="https://www.linkedin.com/in/bethwel-karanja-35667b207/"><img
-                                src="./assets/img/linkedin.svg" alt="linkedin"></a>
+                        <a target="_blank" href="https://www.repentandpreparetheway.org/">
+                            <Domain class="img"></Domain>
+                        </a>
+                        <a target="_blank" href="https://www.facebook.com/bethwelkaranja.wairimu">
+                            <Facebook class="img"></Facebook>
+                        </a>
+                        <a target="_blank" href="https://www.twitter.com/bethwel_karanja">
+                            <Twitter class="img"></Twitter>
+                        </a>
+                        <a target="_blank" href="https://www.instagram.com/bethwel_karanja/">
+                            <Instagram class="img"></Instagram>
+                        </a>
+                        <a target="_blank" href="https://www.linkedin.com/in/bethwel-karanja-35667b207/">
+                            <Linkedin class="img"></Linkedin>
+                        </a>
                     </div>
                 </div>
 
                 <div class="boxes">
                     <h3>Contact Info</h3>
                     <a class="links">
-                        <img src="./assets/img/phone_message.svg" alt="call us">
+                        <Phone class="img"></Phone>
                         +254713 171 848
                     </a>
                     <a target="_blank" href="mailto:karanjabethwel12598@gmail.com" class="links">
-                        <i><img src="./assets/img/gmail.svg" alt="mail to"></i>
+                        <i>
+                            <Gmail class="img"></Gmail>
+                        </i>
                         karanjabethwel12598@gmail.com
                     </a>
                     <a target="_blank"
                        href="https://www.google.com/maps/dir/0.2829029,35.2917425/Moi+University+Main+Campus+Eldoret,+Moi+University,+Kipkenyo,+Kesses+Moi+University+Road/@0.2851804,35.2904123,17z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x1780f5ec5a9f9d87:0x159cb96600e6f677!2m2!1d35.293861!2d0.286735"
-                       class="links"><i><img src="./assets/img/google_maps.svg" alt="location"></i> Moi University,
+                       class="links"><i>
+                        <Maps class="img"></Maps>
+                    </i> Moi University,
                         Kesses
                     </a>
                 </div>
@@ -71,15 +105,21 @@
                 <div class="boxes">
                     <h3>Quick Links</h3>
                     <a href="#" @click="changePage(home)" class="links">
-                        <i><img src="./assets/img/circled_chevron_right.svg" alt="home"></i>
+                        <i>
+                            <Arrow_right class="img"></Arrow_right>
+                        </i>
                         Home
                     </a>
                     <a href="#" @click="changePage(services)" class="links">
-                        <i><img src="./assets/img/circled_chevron_right.svg" alt="services"></i>
+                        <i>
+                            <Arrow_right class="img"></Arrow_right>
+                        </i>
                         Services
                     </a>
                     <a href="#" @click="changePage(recordings)" class="links">
-                        <i><img src="./assets/img/circled_chevron_right.svg" alt="recordings"></i>
+                        <i>
+                            <Arrow_right class="img"></Arrow_right>
+                        </i>
                         Recordings
                     </a>
                 </div>
@@ -105,7 +145,6 @@
 </template>
 <script>
 
-import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import WelcomeItem from "./components/WelcomeItem.vue";
 import HomeScreen from "./components/HomeScreen.vue";
@@ -113,6 +152,8 @@ import AccountsScreen from "./components/AccountsScreen.vue";
 import ServicesScreen from "./components/ServicesScreen.vue";
 import RecordingsScreen from "./components/RecordingsScreen.vue";
 import MembersScreen from "@/components/MembersScreen.vue";
+import Dark from "@/components/icons/dark.vue";
+import Light from "@/components/icons/light.vue";
 
 export default {
     components: {
@@ -122,13 +163,16 @@ export default {
         AccountsScreen,
         ServicesScreen,
         RecordingsScreen,
-        MembersScreen
+        MembersScreen,
+        Light,
+        Dark
     },
     data() {
         return {
             activePage: "home",
+            darkModeOn: "light",
             isDarkMode: false,
-            modeChanger: "change_mode",
+            // modeChanger: "change_mode",
             modeText: "Light",
             currentPage: HomeScreen,
             home: null,
@@ -139,6 +183,7 @@ export default {
             mainBody: null,
             navBar: null,
             themeIcon: null,
+            isLoggedIn: 1,
         }
     },
     mounted() {
@@ -169,6 +214,7 @@ export default {
             this.continueFunctions()
         },
         changePage(page) {
+            alert(page)
             if (page === this.home) {
                 this.home.classList.add("activeSpans")
                 this.services.classList.remove("activeSpans")
@@ -209,9 +255,9 @@ export default {
         continueFunctions() {
             if (this.isDarkMode) {
                 this.modeText = "Dark"
-                this.themeIcon.src = "src/assets/img/moon_symbol.svg"
+                this.darkModeOn = Dark
             } else {
-                this.themeIcon.src = "src/assets/img/sun.svg"
+                this.darkModeOn = Light
                 this.modeText = "Light"
             }
         },

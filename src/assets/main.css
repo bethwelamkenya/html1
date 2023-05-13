@@ -1,12 +1,5 @@
 @import './base.css';
-@import "normalize.css";
-
-#app {
-    /*max-width: 1280px;*/
-    margin: 0;
-    padding: 0;
-    font-weight: normal;
-}
+@import "./normalize.css";
 
 /*! HTML5 Boilerplate v8.0.0 | MIT License | https://html5boilerplate.com/ */
 
@@ -316,7 +309,7 @@ nav a span {
     overflow: hidden;
 }
 
-nav a img {
+nav a .img {
     height: 20px;
     width: 20px;
     background: transparent;
@@ -333,17 +326,25 @@ nav a:hover {
     color: var(--color-text-opposite);
 }
 
-nav img {
+nav .img {
     height: 30px;
     width: 30px;
     margin-left: 10px;
     margin-top: 10px;
-    /*padding: 5px;*/
     background: var(--color-background-nav);
     border-radius: 10px;
 }
 
-nav img:hover {
+.img {
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+    background: var(--color-background-nav);
+    border-radius: 10px;
+}
+
+nav .img:hover {
     background: var(--color-background-nav-hover);
     cursor: pointer;
 }
@@ -379,7 +380,7 @@ header {
     align-items: center;
 }
 
-header img {
+header .img {
     height: 30px;
     width: 30px;
     margin-right: 10px;
@@ -466,7 +467,7 @@ header img {
         height: 50px;
     }
 
-    nav a img {
+    nav a .img {
         width: 0;
     }
 
@@ -492,7 +493,7 @@ header img {
         width: 150px;
     }
 
-    nav.active a img {
+    nav.active a .img {
         width: 30px;
     }
 
@@ -504,7 +505,7 @@ header img {
         margin-left: 0;
     }
 
-    header img {
+    header .img {
         margin-left: 70px;
     }
 }
@@ -535,13 +536,13 @@ footer .box-container h3 {
     font-size: x-large;
 }
 
-footer img {
+footer .img {
     border-radius: 10px;
     margin-right: 10px;
     transition: margin-right 0.25s ease-in-out, transform 0.15s ease-in-out;
 }
 
-footer .share img {
+footer .share .img {
     height: 40px;
     width: 40px;
 }
@@ -551,7 +552,7 @@ footer .share {
     flex-direction: row;
 }
 
-footer .boxes img {
+footer .boxes .img {
     height: 20px;
     width: 20px;
 }
@@ -565,7 +566,7 @@ footer .box-container a {
     padding: 15px 0;
 }
 
-footer .box-container a:hover img {
+footer .box-container a:hover .img {
     margin-right: 30px;
     transform: scale(1.2);
 }
@@ -697,4 +698,8 @@ form a:hover {
 
 .specific-page-title {
     text-align: center;
+}
+
+.img {
+    background: transparent;
 }
