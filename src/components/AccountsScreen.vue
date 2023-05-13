@@ -99,6 +99,7 @@ export default {
     },
     methods: {
         navigateToOther() {
+
             alert(this.parent)
             alert(this.parent.services)
             this.parent.changePage(this.parent.services)
