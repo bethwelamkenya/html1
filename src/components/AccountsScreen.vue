@@ -3,7 +3,6 @@
     <div>
         <h1 class="specific-page-title">Account Page</h1>
         <div id="forms">
-<!--            <form  method="post" name="signup" id="signup" class="signup-form" action="../../databases.php">-->
             <form @submit.prevent="checkAdminDetails">
                 <h2>Admin Log In</h2>
                 <label for="user-name">User Name</label><br>
@@ -34,7 +33,6 @@
                 <button>Add Admin</button>
             </form>
 
-<!--            <form  method="post" name="signup" id="signup" class="signup-form" action="../../databases.php">-->
             <form @submit.prevent="addMember">
                 <h2>Member Sign Up</h2>
                 <label for="memberName">Full Name</label><br>
@@ -99,7 +97,6 @@ export default {
     },
     methods: {
         navigateToOther() {
-
             alert(this.parent)
             alert(this.parent.services)
             this.parent.changePage(this.parent.services)
