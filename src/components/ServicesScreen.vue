@@ -1,121 +1,128 @@
-<script setup>
-// import DayServices from "@/components/views/DayServices.vue";
-</script>
 <template>
-    <div id="services-table-div">
-        <table id="services-table">
-            <tr>
-                <td>Time</td>
-                <td>Sunday</td>
-                <td>Monday</td>
-                <td>Tuesday</td>
-                <td>Wednesday</td>
-                <td>Thursday</td>
-                <td>Friday</td>
-                <td>Saturday</td>
-            </tr>
-            <tr>
-                <td>6.00 AM -<br> 7.00 AM</td>
-                <td></td>
-                <td title="Occurs At Moi University Main Altar">Morning Prayers</td>
-                <td title="Occurs At Moi University Main Altar">Morning Prayers</td>
-                <td title="Occurs At Moi University Main Altar">Morning Prayers</td>
-                <td title="Occurs At Moi University Main Altar">Morning Prayers</td>
-                <td title="Occurs At Moi University Main Altar">Morning Prayers</td>
-                <td title="Occurs At Moi University Main Altar">Morning Prayers</td>
-            </tr>
-            <tr>
-                <td>7.00 AM -<br> 9.00 AM</td>
-                <td title="Occurs At Moi University Main Altar">Prayer Service</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>9.00 AM -<br> 12.00 NOON</td>
-                <td title="Occurs At Moi University Main Altar">Worship Service</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>12.00 NOON -<br> 2.00 PM</td>
-                <td title="Occurs At Moi University Main Altar">Main Service</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>1.00 PM -<br> 2.00 PM</td>
-                <td></td>
-                <td title="Occurs At Talai Stage">Lunch Hour</td>
-                <td title="Occurs At Talai Stage">Lunch Hour</td>
-                <td title="Occurs At Talai Stage">Lunch Hour</td>
-                <td title="Occurs At Talai Stage">Lunch Hour</td>
-                <td title="Occurs At Talai Stage">Lunch Hour</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>4.00 PM -<br> 6.00 PM</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td title="Occurs At A Member's Home">Home Fellowship</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>6.00 PM -<br> 7.00 AM</td>
-                <td></td>
-                <td title="Occurs At Moi University Main Altar">Prayers</td>
-                <td></td>
-                <td title="Occurs At Moi University Main Altar">Prayers</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>7.00 PM -<br> 8.30 PM</td>
-                <td></td>
-                <td></td>
-                <td title="Occurs At NCT8">Students Fellowship</td>
-                <td></td>
-                <td title="Occurs At Moi University Main Altar">Students Fellowship</td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
-    </div>
-    <div id="services-details">
-        <DayServices :events="sundayEvents" day="Sunday"></DayServices>
-        <DayServices :events="mondayEvents" day="Monday"></DayServices>
-        <DayServices :events="tuesdayEvents" day="Tuesday"></DayServices>
-        <DayServices :events="wednesdayEvents" day="Wednesday"></DayServices>
-        <DayServices :events="thursdayEvents" day="Thursday"></DayServices>
-        <DayServices :events="fridayEvents" day="Friday"></DayServices>
-        <DayServices :events="saturdayEvents" day="Saturday"></DayServices>
-    </div>
+    <NavBarView :active="active"></NavBarView>
+    <main id="main-body" ref="mainBody">
+        <div id="services-table-div">
+            <table id="services-table">
+                <tr>
+                    <td>Time</td>
+                    <td>Sunday</td>
+                    <td>Monday</td>
+                    <td>Tuesday</td>
+                    <td>Wednesday</td>
+                    <td>Thursday</td>
+                    <td>Friday</td>
+                    <td>Saturday</td>
+                </tr>
+                <tr>
+                    <td>6.00 AM -<br> 7.00 AM</td>
+                    <td></td>
+                    <td title="Occurs At Moi University Main Altar">Morning Prayers</td>
+                    <td title="Occurs At Moi University Main Altar">Morning Prayers</td>
+                    <td title="Occurs At Moi University Main Altar">Morning Prayers</td>
+                    <td title="Occurs At Moi University Main Altar">Morning Prayers</td>
+                    <td title="Occurs At Moi University Main Altar">Morning Prayers</td>
+                    <td title="Occurs At Moi University Main Altar">Morning Prayers</td>
+                </tr>
+                <tr>
+                    <td>7.00 AM -<br> 9.00 AM</td>
+                    <td title="Occurs At Moi University Main Altar">Prayer Service</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>9.00 AM -<br> 12.00 NOON</td>
+                    <td title="Occurs At Moi University Main Altar">Worship Service</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>12.00 NOON -<br> 2.00 PM</td>
+                    <td title="Occurs At Moi University Main Altar">Main Service</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>1.00 PM -<br> 2.00 PM</td>
+                    <td></td>
+                    <td title="Occurs At Talai Stage">Lunch Hour</td>
+                    <td title="Occurs At Talai Stage">Lunch Hour</td>
+                    <td title="Occurs At Talai Stage">Lunch Hour</td>
+                    <td title="Occurs At Talai Stage">Lunch Hour</td>
+                    <td title="Occurs At Talai Stage">Lunch Hour</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>4.00 PM -<br> 6.00 PM</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td title="Occurs At A Member's Home">Home Fellowship</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>6.00 PM -<br> 7.00 AM</td>
+                    <td></td>
+                    <td title="Occurs At Moi University Main Altar">Prayers</td>
+                    <td></td>
+                    <td title="Occurs At Moi University Main Altar">Prayers</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>7.00 PM -<br> 8.30 PM</td>
+                    <td></td>
+                    <td></td>
+                    <td title="Occurs At NCT8">Students Fellowship</td>
+                    <td></td>
+                    <td title="Occurs At Moi University Main Altar">Students Fellowship</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div id="services-details">
+            <DayServices :events="sundayEvents" day="Sunday"></DayServices>
+            <DayServices :events="mondayEvents" day="Monday"></DayServices>
+            <DayServices :events="tuesdayEvents" day="Tuesday"></DayServices>
+            <DayServices :events="wednesdayEvents" day="Wednesday"></DayServices>
+            <DayServices :events="thursdayEvents" day="Thursday"></DayServices>
+            <DayServices :events="fridayEvents" day="Friday"></DayServices>
+            <DayServices :events="saturdayEvents" day="Saturday"></DayServices>
+        </div>
+        <FooterView></FooterView>
+    </main>
 </template>
 
 <script>
 import DayServices from "@/components/views/DayServices.vue";
+import NavBarView from "@/components/views/NavBarView.vue";
+import FooterView from "@/components/views/FooterView.vue";
 export default {
     name: "ServicesScreen",
     components: {
-        DayServices
+        DayServices,
+        NavBarView,
+        FooterView,
     },
     data() {
         return {
+            mainBody: null,
+            active: "services",
             sundayEvents: [
                 {
                     time: "7.00 AM - 9.00AM",
@@ -226,6 +233,9 @@ export default {
                 }
             ],
         };
+    },
+    mounted() {
+        this.mainBody = this.$refs.mainBody
     }
 }
 </script>

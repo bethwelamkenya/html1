@@ -1,77 +1,94 @@
 <template>
+    <NavBarView :active="active"></NavBarView>
+    <main id="main-body" ref="mainBody">
+        <div>
+            <h1 class="specific-page-title">Account Page</h1>
+            <div id="forms">
+                <form @submit.prevent="checkAdminDetails">
+                    <h2>Admin Log In</h2>
+                    <label for="user-name">User Name</label><br>
+                    <input type="text" name="user-name" id="user-name" placeholder="User Name" v-model="admin_UserName"><br>
+                    <label for="login-password">Password</label><br>
+                    <input type="password" name="login-password" id="login-password" placeholder="********"
+                           v-model="admin_Password"><br>
+                    <button type="submit">Log In</button>
+                    <p>Forgot Password? <a href="#" @click="navigateToOther">Reset Password</a></p>
+                </form>
 
-    <div>
-        <h1 class="specific-page-title">Account Page</h1>
-        <div id="forms">
-            <form @submit.prevent="checkAdminDetails">
-                <h2>Admin Log In</h2>
-                <label for="user-name">User Name</label><br>
-                <input type="text" name="user-name" id="user-name" placeholder="User Name" v-model="admin_UserName"><br>
-                <label for="login-password">Password</label><br>
-                <input type="password" name="login-password" id="login-password" placeholder="********"
-                       v-model="admin_Password"><br>
-                <button type="submit">Log In</button>
-                <p>Forgot Password? <a href="#" @click="navigateToOther">Reset Password</a></p>
-            </form>
+                <form @submit.prevent="addAdmin">
+                    <h2>Admin Sign Up</h2>
+                    <label for="adminName">Full Name</label><br>
+                    <input type="text" id="adminName" v-model="adminName" placeholder="Name" required><br>
+                    <label for="adminEmail">Email</label><br>
+                    <input type="email" id="adminEmail" v-model="adminEmail" placeholder="Email"><br>
+                    <label for="adminNumber">Number</label><br>
+                    <input type="number" id="adminNumber" v-model="adminNumber" placeholder="Number"><br>
+                    <label for="adminUserName">User Name</label><br>
+                    <input type="text" id="adminUserName" v-model="adminUserName" placeholder="User Name"><br>
+                    <label for="adminPassword">Password</label><br>
+                    <input type="password" id="adminPassword" v-model="adminPassword" placeholder="Password"><br>
+                    <label for="adminSecurity">Security</label><br>
+                    <input type="text" id="adminSecurity" v-model="adminSecurity" placeholder="Security"><br>
+                    <label for="adminAnswer">Answer</label><br>
+                    <input type="password" id="adminAnswer" v-model="adminAnswer" placeholder="Answer"><br>
+                    <button>Add Admin</button>
+                </form>
 
-            <form @submit.prevent="addAdmin">
-                <h2>Admin Sign Up</h2>
-                <label for="adminName">Full Name</label><br>
-                <input type="text" id="adminName" v-model="adminName" placeholder="Name" required><br>
-                <label for="adminEmail">Email</label><br>
-                <input type="email" id="adminEmail" v-model="adminEmail" placeholder="Email"><br>
-                <label for="adminNumber">Number</label><br>
-                <input type="number" id="adminNumber" v-model="adminNumber" placeholder="Number"><br>
-                <label for="adminUserName">User Name</label><br>
-                <input type="text" id="adminUserName" v-model="adminUserName" placeholder="User Name"><br>
-                <label for="adminPassword">Password</label><br>
-                <input type="password" id="adminPassword" v-model="adminPassword" placeholder="Password"><br>
-                <label for="adminSecurity">Security</label><br>
-                <input type="text" id="adminSecurity" v-model="adminSecurity" placeholder="Security"><br>
-                <label for="adminAnswer">Answer</label><br>
-                <input type="password" id="adminAnswer" v-model="adminAnswer" placeholder="Answer"><br>
-                <button>Add Admin</button>
-            </form>
+                <form @submit.prevent="addMember">
+                    <h2>Member Sign Up</h2>
+                    <label for="memberName">Full Name</label><br>
+                    <input type="text" id="memberName" v-model="memberName" placeholder="Name" required
+                           name="memberName"><br>
+                    <label for="memberEmail">Email</label><br>
+                    <input type="email" id="memberEmail" v-model="memberEmail" placeholder="Email"
+                           name="memberEmail"><br>
+                    <label for="adminNumber">Registration number</label><br>
+                    <input type="text" id="memberRegNo" v-model="memberRegNo" placeholder="Reg No"
+                           name="memberRegNo"><br>
+                    <label for="memberNumber">Number</label><br>
+                    <input type="number" id="memberNumber" v-model="memberNumber" placeholder="Number"
+                           name="memberNumber"><br>
+                    <label for="memberSchool">School</label><br>
+                    <input type="text" id="memberSchool" v-model="memberSchool" placeholder="School"
+                           name="memberSchool"><br>
+                    <label for="memberYear">Year</label><br>
+                    <input type="number" id="memberYear" v-model="memberYear" placeholder="Year" name="memberYear"><br>
+                    <label for="memberDepartment">Department</label><br>
+                    <input type="text" id="memberDepartment" v-model="memberDepartment" placeholder="Department"
+                           name="memberDepartment"><br>
+                    <label for="memberResidence">Residence</label><br>
+                    <input type="text" id="memberResidence" v-model="memberResidence" placeholder="Residence"
+                           name="memberResidence"><br>
+                    <button>Add Member</button>
+                </form>
 
-            <form @submit.prevent="addMember">
-                <h2>Member Sign Up</h2>
-                <label for="memberName">Full Name</label><br>
-                <input type="text" id="memberName" v-model="memberName" placeholder="Name" required name="memberName"><br>
-                <label for="memberEmail">Email</label><br>
-                <input type="email" id="memberEmail" v-model="memberEmail" placeholder="Email" name="memberEmail"><br>
-                <label for="adminNumber">Registration number</label><br>
-                <input type="text" id="memberRegNo" v-model="memberRegNo" placeholder="Reg No" name="memberRegNo"><br>
-                <label for="memberNumber">Number</label><br>
-                <input type="number" id="memberNumber" v-model="memberNumber" placeholder="Number" name="memberNumber"><br>
-                <label for="memberSchool">School</label><br>
-                <input type="text" id="memberSchool" v-model="memberSchool" placeholder="School" name="memberSchool"><br>
-                <label for="memberYear">Year</label><br>
-                <input type="number" id="memberYear" v-model="memberYear" placeholder="Year" name="memberYear"><br>
-                <label for="memberDepartment">Department</label><br>
-                <input type="text" id="memberDepartment" v-model="memberDepartment" placeholder="Department" name="memberDepartment"><br>
-                <label for="memberResidence">Residence</label><br>
-                <input type="text" id="memberResidence" v-model="memberResidence" placeholder="Residence" name="memberResidence"><br>
-                <button>Add Member</button>
-            </form>
-
-            <form @submit.prevent="checkMemberDetails">
-                <h2>Member Log In</h2>
-                <label for="name">Name</label><br>
-                <input type="text" name="name" id="name" placeholder="Name" v-model="member_Name"><br>
-                <button type="submit">Log In</button>
-            </form>
+                <form @submit.prevent="checkMemberDetails">
+                    <h2>Member Log In</h2>
+                    <label for="name">Name</label><br>
+                    <input type="text" name="name" id="name" placeholder="Name" v-model="member_Name"><br>
+                    <button type="submit">Log In</button>
+                </form>
+            </div>
         </div>
-    </div>
+        <FooterView></FooterView>
+    </main>
 </template>
 
 <script>
 import axios from "axios";
+import FooterView from "@/components/views/FooterView.vue";
+import NavBarView from "@/components/views/NavBarView.vue";
 
 export default {
     name: "AccountsScreen",
+    components: {
+        NavBarView,
+        FooterView,
+    },
     data() {
         return {
-            parent: null,
+            active: "accounts",
+            mainBody: null,
             adminName: "",
             adminEmail: "",
             adminNumber: "",
@@ -93,7 +110,7 @@ export default {
         }
     },
     created() {
-        this.parent = this.$parent
+        this.mainBody = this.$refs.mainBody
     },
     methods: {
         navigateToOther() {

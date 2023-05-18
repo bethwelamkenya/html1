@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import HomeScreen from "@/components/HomeScreen.vue";
 import './assets/main.css'
 
-createApp(App).mount('#app')
+createApp(HomeScreen).mount('#app')

@@ -1,45 +1,56 @@
 <template>
-    <h2 ref="isLogged">{{loggedText}}</h2>
-    <div id="members-div">
-        <table id="members-table" ref="members-table">
-            <thead>
-            <tr>
-                <td>ID</td>
-                <td>Name</td>
-                <td>Email</td>
-                <td>Reg No</td>
-                <td>Mobile No</td>
-                <td>School</td>
-                <td>Year</td>
-                <td>Department</td>
-                <td>Residence</td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="(members, index) in members" :key="index">
-                <td>{{ members.id }}</td>
-                <td>{{ members.name }}</td>
-                <td>{{ members.email }}</td>
-                <td>{{ members.reg_no }}</td>
-                <td>{{ members.number }}</td>
-                <td>{{ members.school }}</td>
-                <td>{{ members.year }}</td>
-                <td>{{ members.department }}</td>
-                <td>{{ members.residence }}</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+    <NavBarView :active="active"></NavBarView>
+    <main id="main-body" ref="mainBody">
+        <h2 ref="isLogged">{{ loggedText }}</h2>
+        <div id="members-div">
+            <table id="members-table" ref="members-table">
+                <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Reg No</td>
+                    <td>Mobile No</td>
+                    <td>School</td>
+                    <td>Year</td>
+                    <td>Department</td>
+                    <td>Residence</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(members, index) in members" :key="index">
+                    <td>{{ members.id }}</td>
+                    <td>{{ members.name }}</td>
+                    <td>{{ members.email }}</td>
+                    <td>{{ members.reg_no }}</td>
+                    <td>{{ members.number }}</td>
+                    <td>{{ members.school }}</td>
+                    <td>{{ members.year }}</td>
+                    <td>{{ members.department }}</td>
+                    <td>{{ members.residence }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <FooterView></FooterView>
+    </main>
 </template>
 <script>
 import axios from 'axios';
+import NavBarView from "@/components/views/NavBarView.vue";
+import FooterView from "@/components/views/FooterView.vue";
 
 export default {
 
     name: "MembersScreen",
+    components: {
+        NavBarView,
+        FooterView,
+    },
     data() {
         return {
-            parent: null,
+            active: "members",
+            mainBody: null,
             membersTable: null,
             isLogged: null,
             logged: 0,
@@ -48,12 +59,11 @@ export default {
         }
     },
     mounted() {
-        this.parent = this.$parent
-        this.logged = this.parent.isLoggedIn
+        this.mainBody = this.$refs.mainBody
         // alert(this.logged)
         this.membersTable = this.$refs["members-table"]
         this.isLogged = this.$refs["isLogged"]
-        if (this.parent.isLoggedIn === 1){
+        if (this.parent.isLoggedIn === 1) {
             axios.get('http://127.0.0.1:3000/data')
                 // axios.get('http://localhost:3000/data')
                 .then(response => {
@@ -63,36 +73,14 @@ export default {
                     console.log(error);
                     alert("error " + error)
                 });
-            // this.isLogged.style = 'visibility: hidden;'
             this.isLogged.classList.add('loggedIn')
             this.loggedText = ''
-            // this.isLogged.textContent = ''
         } else {
             this.isLogged.classList.remove('loggedIn')
             this.loggedText = 'Log In To View Members'
         }
     },
     methods: {
-        // populateRandomData() {
-        //     const newMembers = []
-        //     for (let i = 0; i < 10; i++) {
-        //         newMembers.push(
-        //             {
-        //                 ID: i,
-        //                 Name: "Bethu",
-        //                 Email: "bethu@gmail.com",
-        //                 RegNo: "EC/2676/21",
-        //                 MobileNo: 794894938,
-        //                 School: "Engineering",
-        //                 Year: 3,
-        //                 Department: "Media",
-        //                 Residence: "Circuit"
-        //             }
-        //         )
-        //     }
-        //     this.members = [...this.members, ...newMembers]
-        //     this.members.$forceUpdate
-        // }
     }
 }
 </script>

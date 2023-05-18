@@ -1,9 +1,3 @@
-<script setup>
-import Download_cloud from "@/components/icons/download_cloud.vue";
-import Play from "@/components/icons/play.vue";
-import Audio_wave from "@/components/icons/audio_wave.vue";
-import Pause from "@/components/icons/pause.vue";
-</script>
 <template>
     <div id="item">
         <h2 ref="header">{{ day }}</h2>
@@ -18,6 +12,11 @@ import Pause from "@/components/icons/pause.vue";
 
 </template>
 <script>
+import Play from "@/components/icons/play.vue";
+import Pause from "@/components/icons/pause.vue";
+import Download_cloud from "@/components/icons/download_cloud.vue";
+import Audio_wave from "@/components/icons/audio_wave.vue";
+
 export default {
     name: "Recording",
     props: {
@@ -30,6 +29,12 @@ export default {
             link: Array,
             default: () => []
         }
+    },
+    components: {
+        Play,
+        Pause,
+        Download_cloud,
+        Audio_wave,
     },
     mounted() {
         // const header = this.$refs.header;
